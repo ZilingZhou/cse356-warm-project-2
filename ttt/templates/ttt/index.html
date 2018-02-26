@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE>
+<html>
+<head>
+	<title>Tic Tac Toe</title>
+	<link rel="stylesheet" href="{% static 'ttt/style.css' %}"/>
+</head>
+<body>
+
+
+<form method="POST" action="#">
+    {% csrf_token %}
+    <label>Your name: </label>
+    {{ form.name }}
+    <input type="submit" value="OK">
+</form>
+</body>
+</html>

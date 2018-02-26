@@ -1,0 +1,276 @@
+<!DOCTYPE>
+<html>
+    <head>
+        <title>On the board</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+<body>
+    <div>    
+        <span>Hello {{ form.name.value }} </span>
+        <span id = date></span>
+    </div>
+
+<script> 
+document.getElementById("date").innerHTML = Date();
+</script>
+
+<canvas id="board" onclick="placeX(event)" width="300" height="300" 
+    style="border:1px solid #d3d3d3";></canvas>
+
+<script>
+    var isSet = [0,0,0,
+                 0,0,0,
+                 0,0,0];
+    var end = false;
+    var canvas = document.getElementById("board");
+    var ctx = canvas.getContext("2d");
+    ctx.beginPath();
+    ctx.moveTo(0,100);
+    ctx.lineTo(300,100);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(0,200);
+    ctx.lineTo(300,200);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(100,0);
+    ctx.lineTo(100,300);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(200,0);
+    ctx.lineTo(200,300);
+    ctx.stroke();
+
+    function placeX(event){     
+        var x = event.clientX;
+        var y = event.clientY;
+        var canvas = document.getElementById("board");
+        var ctx = canvas.getContext("2d");
+        if(x < 100){
+            if(y < 100){
+                if(isSet[0] == 0){
+                    isSet[0] = 1;
+                    ctx.beginPath();
+                    ctx.moveTo(25,25);
+                    ctx.lineTo(75,75);
+                    ctx.stroke();
+                    ctx.beginPath();
+                    ctx.moveTo(75,25);
+                    ctx.lineTo(25,75);
+                    ctx.stroke();
+                    askPlay();
+                    
+                }
+            }
+            else if(y < 200){
+                if(isSet[3] == 0){
+                    isSet[3] = 1;
+                    ctx.beginPath();
+                    ctx.moveTo(25,125);
+                    ctx.lineTo(75,175);
+                    ctx.stroke();
+                    ctx.beginPath();
+                    ctx.moveTo(75,125);
+                    ctx.lineTo(25,175);
+                    ctx.stroke();
+                    askPlay();
+                }
+            }else{
+                if(isSet[6] == 0){
+                    isSet[6] = 1;
+                    ctx.beginPath();
+                    ctx.moveTo(25,225);
+                    ctx.lineTo(75,275);
+                    ctx.stroke();
+                    ctx.beginPath();
+                    ctx.moveTo(75,225);
+                    ctx.lineTo(25,275);
+                    ctx.stroke();
+                    askPlay();
+                }
+            }
+        }
+        else if(x < 200){
+            if(y < 100){
+                if(isSet[1] == 0){
+                    isSet[1] = 1;
+                    ctx.beginPath();
+                    ctx.moveTo(125,25);
+                    ctx.lineTo(175,75);
+                    ctx.stroke();
+                    ctx.beginPath();
+                    ctx.moveTo(175,25);
+                    ctx.lineTo(125,75);
+                    ctx.stroke();
+                    askPlay();
+                }
+            }else if(y < 200){
+                if(isSet[4] == 0){
+                    isSet[4] = 1;
+                    ctx.beginPath();
+                    ctx.moveTo(125,125);
+                    ctx.lineTo(175,175);
+                    ctx.stroke();
+                    ctx.beginPath();
+                    ctx.moveTo(175,125);
+                    ctx.lineTo(125,175);
+                    ctx.stroke();
+                    askPlay();
+                }
+            }else{
+                if(isSet[7] == 0){
+                    isSet[7] = 1;
+                    ctx.beginPath();
+                    ctx.moveTo(125,225);
+                    ctx.lineTo(175,275);
+                    ctx.stroke();
+                    ctx.beginPath();
+                    ctx.moveTo(175,225);
+                    ctx.lineTo(125,275);
+                    ctx.stroke();
+                    askPlay();
+                }
+            }   
+        }
+        else{
+            if(y < 100){
+                if(isSet[2] == 0){
+                    isSet[2] = 1;
+                    ctx.beginPath();
+                    ctx.moveTo(225,25);
+                    ctx.lineTo(275,75);
+                    ctx.stroke();
+                    ctx.beginPath();
+                    ctx.moveTo(275,25);
+                    ctx.lineTo(225,75);
+                    ctx.stroke();
+                    askPlay();
+                }
+            }else if(y < 200){
+                if(isSet[5] == 0){
+                    isSet[5] = 1;
+                    ctx.beginPath();
+                    ctx.moveTo(225,125);
+                    ctx.lineTo(275,175);
+                    ctx.stroke();
+                    ctx.beginPath();
+                    ctx.moveTo(225,175);
+                    ctx.lineTo(275,125);
+                    ctx.stroke();
+                    askPlay();
+                }
+            }else{
+                if(isSet[8] == 0){
+                    isSet[8] = 1;
+                    ctx.beginPath();
+                    ctx.moveTo(225,225);
+                    ctx.lineTo(275,275);
+                    ctx.stroke();
+                    ctx.beginPath();
+                    ctx.moveTo(275,225);
+                    ctx.lineTo(225,275);
+                    ctx.stroke();
+                    askPlay();
+                }
+            }   
+        }
+    }
+    
+    function reRender(argument){
+        if(argument[0] == 2){
+            var canvas = document.getElementById("board");
+            var ctx = canvas.getContext("2d");
+            ctx.beginPath();
+            ctx.arc(50,50,25,0,2*Math.PI);
+            ctx.stroke();
+        }
+        if(argument[1] == 2){
+            var canvas = document.getElementById("board");
+            var ctx = canvas.getContext("2d");
+            ctx.beginPath();
+            ctx.arc(150,50,25,0,2*Math.PI);
+            ctx.stroke();
+        }
+        if(argument[2] == 2){
+            var canvas = document.getElementById("board");
+            var ctx = canvas.getContext("2d");
+            ctx.beginPath();
+            ctx.arc(250,50,25,0,2*Math.PI);
+            ctx.stroke();
+        }
+        if(argument[3] == 2){
+            var canvas = document.getElementById("board");
+            var ctx = canvas.getContext("2d");
+            ctx.beginPath();
+            ctx.arc(50,150,25,0,2*Math.PI);
+            ctx.stroke();
+        }
+        if(argument[4] == 2){
+            var canvas = document.getElementById("board");
+            var ctx = canvas.getContext("2d");
+            ctx.beginPath();
+            ctx.arc(150,150,25,0,2*Math.PI);
+            ctx.stroke();
+        }
+        if(argument[5] == 2){
+            var canvas = document.getElementById("board");
+            var ctx = canvas.getContext("2d");
+            ctx.beginPath();
+            ctx.arc(250,150,25,0,2*Math.PI);
+            ctx.stroke();
+        }
+        if(argument[6] == 2){
+            var canvas = document.getElementById("board");
+            var ctx = canvas.getContext("2d");
+            ctx.beginPath();
+            ctx.arc(50,250,25,0,2*Math.PI);
+            ctx.stroke();
+        }
+        if(argument[7] == 2){
+            var canvas = document.getElementById("board");
+            var ctx = canvas.getContext("2d");
+            ctx.beginPath();
+            ctx.arc(150,250,25,0,2*Math.PI);
+            ctx.stroke();
+        }
+        if(argument[8] == 2){
+            var canvas = document.getElementById("board");
+            var ctx = canvas.getContext("2d");
+            ctx.beginPath();
+            ctx.arc(250,250,25,0,2*Math.PI);
+            ctx.stroke();
+        }
+    }
+    
+    function askPlay() {
+        if(!end) {
+            isSet_dict = {'grid': isSet};
+            //console.log("acess askPlay");
+            $.ajax({        
+                type: 'POST',
+                url: '/ttt/play',
+                dataType: 'json',
+                contentType: 'application/json',
+                data: JSON.stringify(isSet_dict),        
+                success: function(result){
+                    isSet = result['grid'];
+                    //console.log(isSet[0]);
+                    reRender(isSet);
+                    if(result['over']){
+                        end = true;
+                        if(result['winner'] == ' '){
+                            alert("The game is tie");
+                        }else if(result['winner'] == 'X'){
+                            alert("The winner is X");
+                        }else{
+                            alert("The winner is O");
+                        }
+                    }
+                }             
+            });
+        }   
+    }
+</script>
+</body>
+
+</html>
