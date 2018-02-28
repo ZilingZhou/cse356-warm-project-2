@@ -16,9 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls import include
-
+#from testsite import ttt
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('ttt/',include('ttt.urls')),
-    path('ttt',include('ttt.urls')),
+    path('',include('ttt.urls')),
+    #path('ttt/',include('ttt.urls')),
+    #path('ttt',include('ttt.urls')),
+    #path('adduser/',ttt.views.adduser),
+    #path('verify/',ttt.views.verify),
 ]
